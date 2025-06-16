@@ -3,7 +3,8 @@ import type { ChangeEvent } from 'react';
 import './createForm.css';
 import { useSelector } from 'react-redux';
 import { RootState } from './store';
-
+import dotenv from 'dotenv';
+dotenv.config();
 interface Field {
   id: string;
   type: 'text' | 'email';
@@ -122,8 +123,9 @@ function CreateForm() {
       responseCount: 0,
     };
 
+const API_BASE1 = import.meta.env.VITE_API_BASE;
     try {
-      const res = await fetch('http://localhost:5000/api/forms', {
+      const res = await fetch(`${API_BASE1}/api/forms`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

@@ -50,8 +50,9 @@ const ViewForm = () => {
 
   useEffect(() => {
     if (!id) return;
+    const API_BASE1 = import.meta.env.VITE_API_BASE;
 
-    fetch(`http://localhost:5000/api/forms/${id}`)
+    fetch(`${API_BASE1}/api/forms/${id}`)
       .then((response) => response.json())
       .then((json: ApiResponse) => {
         if (json.success && json.form) {
@@ -70,10 +71,11 @@ const ViewForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form || !id || initialVersion === null) return;
+    const API_BASE1 = import.meta.env.VITE_API_BASE;
 
     try {
       // ✅ Re-fetch the form before submitting
-      const latestRes = await fetch(`http://localhost:5000/api/forms/${id}`);
+      const latestRes = await fetch(`${API_BASE1}/api/forms/${id}`);
       const latestJson: ApiResponse = await latestRes.json();
 
       if (!latestJson.success || !latestJson.form) {
@@ -99,8 +101,9 @@ const ViewForm = () => {
           value,
         })),
       };
+      const API_BASE1 = import.meta.env.VITE_API_BASE;
 
-      const res = await fetch("http://localhost:5000/api/responses/", {
+      const res = await fetch(`${API_BASE1}/api/responses/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(responseBody),

@@ -63,16 +63,17 @@ const ViewResponse = () => {
   const [responses, setResponses] = useState<ResponseItem[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedResponseId, setSelectedResponseId] = useState<string | null>(null);
+  const API_BASE1 = import.meta.env.VITE_API_BASE;
 
   useEffect(() => {
     if (!id) return;
     const fetchFormAndResponses = async () => {
       try {
-        const formRes = await fetch(`http://localhost:5000/api/forms/${id}`);
+        const formRes = await fetch(`${API_BASE1}/api/forms/${id}`);
         const formJson: FormApiResponse = await formRes.json();
         if (formJson.success) setForm(formJson.form);
 
-        const resRes = await fetch(`http://localhost:5000/api/responses/${id}`);
+        const resRes = await fetch(`${API_BASE1}/api/responses/${id}`);
         const resJson: ResponseApiResponse = await resRes.json();
         if (resJson.success) setResponses(resJson.responses);
       } catch (error) {
@@ -93,7 +94,7 @@ const ViewResponse = () => {
   const handleDelete = async () => {
     if (!selectedResponseId) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/responses/${selectedResponseId}`, {
+      const res = await fetch(`${API_BASE1}/api/responses/${selectedResponseId}`, {
         method: "DELETE",
       });
       const data = await res.json();

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from "./store";
-
+import dotenv from 'dotenv';
+dotenv.config();
 type Field = {
   id: string;
   type: string;
@@ -61,10 +62,11 @@ const EditFormPage = () => {
         setLoading(false);
         return;
       }
+      const API_BASE1 = import.meta.env.VITE_API_BASE;
 
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:5000/api/forms/${formId}`);
+        const response = await fetch(`${API_BASE1}/api/forms/${formId}`);
         const result = await response.json();
         
         if (result.success && result.form) {
@@ -150,9 +152,10 @@ const EditFormPage = () => {
     setError(null);
     
     console.log('Form data to be submitted:', JSON.stringify(formData, null, 2));
-    
+    const API_BASE1 = import.meta.env.VITE_API_BASE;
+
     try {
-      const res = await fetch(`http://localhost:5000/api/forms/${formId}`, {
+      const res = await fetch(`${API_BASE1}/api/forms/${formId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

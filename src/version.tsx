@@ -51,7 +51,7 @@ const FormVersionControl = ({ formId }: { formId?: string }) => {
     if (!currentFormId) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/forms/${currentFormId}/versions`);
+      const response = await fetch(`${API_BASE1}/api/forms/${currentFormId}/versions`);
       const data: ApiResponse = await response.json();
       if (data.success && data.versions) {
         setVersions(data.versions);
@@ -68,11 +68,12 @@ const FormVersionControl = ({ formId }: { formId?: string }) => {
   useEffect(() => {
     fetchVersions();
   }, [currentFormId]);
+  const API_BASE1 = import.meta.env.VITE_API_BASE;
 
   const setAsActive = async (version: number) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/forms/${currentFormId}/versions/${version}/activate`,
+        `${API_BASE1}/api/forms/${currentFormId}/versions/${version}/activate`,
         { method: 'PATCH' }
       );
       const data = await res.json();

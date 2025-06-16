@@ -46,9 +46,10 @@ function GetForm() {
   const [filteredForms, setFilteredForms] = useState<Form[]>([]);
   const [loading, setLoading] = useState(true);
   const [copiedFormId, setCopiedFormId] = useState<string | null>(null);
+  const API_BASE1 = import.meta.env.VITE_API_BASE;
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/forms')
+    fetch(`${API_BASE1}/api/forms`)
       .then((response) => response.json())
       .then((json: ApiResponse) => {
         const userForms = json.forms.filter((form) => form.createdBy === userEmail);
@@ -60,6 +61,7 @@ function GetForm() {
         setLoading(false);
       });
   }, [userEmail]);
+  const API_BASE1 = import.meta.env.VITE_API_BASE;
 
   const handleCopyLink = (formId: string) => {
     const link = `http://localhost:5173/viewForm/${formId}`;
