@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from "./store";
-import dotenv from 'dotenv';
-dotenv.config();
+
 type Field = {
   id: string;
   type: string;

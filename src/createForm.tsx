@@ -3,8 +3,7 @@ import type { ChangeEvent } from 'react';
 import './createForm.css';
 import { useSelector } from 'react-redux';
 import { RootState } from './store';
-import dotenv from 'dotenv';
-dotenv.config();
+
 interface Field {
   id: string;
   type: 'text' | 'email';

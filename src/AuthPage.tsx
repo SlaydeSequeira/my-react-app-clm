@@ -4,8 +4,7 @@ import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from './store';
 import { useNavigate } from 'react-router-dom';
-import dotenv from 'dotenv';
-dotenv.config();
+
 const API_BASE1 = import.meta.env.VITE_API_BASE;
 const API_BASE = `${API_BASE1}/api/users`;
 const OTP_API_BASE = `${API_BASE1}/api/users`;
