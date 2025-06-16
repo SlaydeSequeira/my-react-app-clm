@@ -1,0 +1,1 @@
+{"root":["./jest.setup.ts","./playwright.config.ts","./vite.config.ts","./e2e/createForm.spec.ts","./e2e/example.spec.ts","./src/App.tsx","./src/AuthPage.tsx","./src/EditFormPage.tsx","./src/createForm.tsx","./src/getForm.tsx","./src/main.tsx","./src/store.ts","./src/version.tsx","./src/viewForm.tsx","./src/viewResponse.tsx","./src/vite-env.d.ts"],"version":"5.8.3"}
