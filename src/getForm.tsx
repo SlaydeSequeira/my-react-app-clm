@@ -46,7 +46,6 @@ function GetForm() {
   const [filteredForms, setFilteredForms] = useState<Form[]>([]);
   const [loading, setLoading] = useState(true);
   const [copiedFormId, setCopiedFormId] = useState<string | null>(null);
-  const API_BASE1 = import.meta.env.VITE_API_BASE;
 
   useEffect(() => {
     fetch(`${API_BASE1}/api/forms`)

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+const API_BASE1 = import.meta.env.VITE_API_BASE;
 
 type Field = {
   id: string;
@@ -71,10 +72,9 @@ const ViewForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form || !id || initialVersion === null) return;
-    const API_BASE1 = import.meta.env.VITE_API_BASE;
-
     try {
       // ✅ Re-fetch the form before submitting
+
       const latestRes = await fetch(`${API_BASE1}/api/forms/${id}`);
       const latestJson: ApiResponse = await latestRes.json();
 
@@ -101,7 +101,6 @@ const ViewForm = () => {
           value,
         })),
       };
-      const API_BASE1 = import.meta.env.VITE_API_BASE;
 
       const res = await fetch(`${API_BASE1}/api/responses/`, {
         method: "POST",
